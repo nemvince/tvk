@@ -23,10 +23,8 @@ export default defineConfig({
         UnoCSSRspackPlugin({
           presets: [presetWind4()],
           content: {
-            filesystem: [
-              'index.html'
-            ]
-          }
+            filesystem: ['index.html'],
+          },
         }),
       ],
     },

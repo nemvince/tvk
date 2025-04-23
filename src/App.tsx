@@ -1,13 +1,13 @@
-import { useState } from 'preact/hooks'
 import { Navbar } from '@/components/navbar'
 import { Home } from '@/sites/home'
+import { useState } from 'preact/hooks'
 
 export const App = () => {
   const sites = [
     { name: 'Home', component: Home },
     { name: 'Something', component: () => <div>Second Page</div> },
   ]
-  
+
   const [activeSite, setActiveSite] = useState(sites[0])
 
   return (

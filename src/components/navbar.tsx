@@ -1,4 +1,5 @@
-import type { Site } from "@/lib/types";
+import { ThemeToggle } from '@/components/theme'
+import type { Site } from '@/lib/types'
 
 export const Navbar = ({
   active,
@@ -20,6 +21,7 @@ export const Navbar = ({
               {site.name}
             </span>
           ))}
+          <ThemeToggle />
         </nav>
       </header>
     </>
