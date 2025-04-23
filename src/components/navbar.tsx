@@ -13,7 +13,7 @@ export const Navbar = ({
         <nav class='flex gap-4'>
           {sites.map(site => (
             <span
-              class={`cursor-pointer ${active === site.name ? 'underline' : ''}`}
+              class={`cursor-pointer transition-all hover:font-semibold ${active === site.name ? 'underline' : ''}`}
               onClick={() => setActiveSite(site)}
               onKeyPress={() => setActiveSite(site)}
               key={site.name}

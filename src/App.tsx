@@ -17,9 +17,7 @@ export const App = () => {
         sites={sites}
         setActiveSite={setActiveSite}
       />
-      <main class='grow flex flex-col items-center justify-center'>
-        {activeSite.component()}
-      </main>
+      {activeSite.component()}
       <footer class='h-16 p-8 flex justify-center items-center mx-auto max-w-3xl w-full'>
         <p class='text-sm'>© {new Date().getFullYear()} tvk.lol</p>
       </footer>

@@ -32,7 +32,7 @@ export const ThemeToggle = () => {
       onClick={toggleTheme}
       aria-label='Toggle theme'
     >
-      <span class='transition-all scale-100 rotate-180 dark:scale-0 dark:rotate-none'>
+      <span class='transition-all scale-125 rotate-180 dark:scale-0 dark:rotate-none'>
         <svg
           viewBox='0 0 15 15'
           fill='none'
@@ -48,7 +48,7 @@ export const ThemeToggle = () => {
           />
         </svg>
       </span>
-      <span class='absolute transition-all scale-0 dark:scale-100 dark:rotate-90'>
+      <span class='absolute transition-all scale-0 dark:scale-125 dark:rotate-90'>
         <svg
           viewBox='0 0 15 15'
           fill='none'
