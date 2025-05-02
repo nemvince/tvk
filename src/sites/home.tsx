@@ -13,7 +13,11 @@ export const Home = () => {
       <p class='text-lg text-center max-w-xl'>
         Built with Preact and UnoCSS, bundled with rspack.
         <br />
-        This is what a <a class='underline' href="https://motherfuckingwebsite.com/">motherfucking portfolio</a> is.
+        This is what a{' '}
+        <a class='underline' href='https://motherfuckingwebsite.com/'>
+          motherfucking portfolio
+        </a>{' '}
+        is.
       </p>
     </main>
   )
