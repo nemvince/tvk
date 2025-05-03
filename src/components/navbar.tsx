@@ -1,11 +1,9 @@
 import { ThemeToggle } from '@/components/theme'
-import type { Site } from '@/lib/types'
+import { useSite } from '@/lib/hooks/site'
 
-export const Navbar = ({
-  active,
-  sites,
-  setActiveSite,
-}: { active: string; sites: Site[]; setActiveSite: (s: Site) => void }) => {
+export const Navbar = () => {
+  const { activeSite, setActiveSite, sites } = useSite()
+
   return (
     <>
       <header class='h-16 p-8 flex justify-between items-center mx-auto max-w-3xl w-full'>
@@ -21,7 +19,7 @@ export const Navbar = ({
           {sites.map(site => (
             <button
               type='button'
-              class={`cursor-pointer transition-all hover:font-semibold ${active === site.name ? 'underline' : ''}`}
+              class={`cursor-pointer transition-all hover:font-semibold ${activeSite.name === site.name ? 'underline' : ''}`}
               onClick={() => setActiveSite(site)}
               onKeyPress={() => setActiveSite(site)}
               key={site.name}

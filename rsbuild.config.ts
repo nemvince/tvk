@@ -11,6 +11,7 @@ export default defineConfig({
   },
   output: {
     cleanDistPath: true,
+    inlineStyles: true,
     legalComments: 'none',
     sourceMap: {
       js: false,

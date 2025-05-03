@@ -1,23 +1,29 @@
 import { Navbar } from '@/components/navbar'
+import { SiteProvider, useSite } from '@/lib/hooks/site'
+import { About } from '@/sites/about'
 import { Home } from '@/sites/home'
-import { useState } from 'preact/hooks'
+
+const ActiveSiteRenderer = () => {
+  const { activeSite } = useSite()
+  const ActiveComponent = activeSite.component
+
+  return <ActiveComponent />
+}
 
 export const App = () => {
   const sites = [
     { name: 'Home', component: Home },
-    { name: 'Something', component: () => <div>Second Page</div> },
+    { name: 'About', component: About },
   ]
-
-  const [activeSite, setActiveSite] = useState(sites[0])
 
   return (
     <>
-      <Navbar
-        active={activeSite.name}
-        sites={sites}
-        setActiveSite={setActiveSite}
-      />
-      {activeSite.component()}
+      <SiteProvider sites={sites}>
+        <>
+          <Navbar />
+          <ActiveSiteRenderer />
+        </>
+      </SiteProvider>
       <footer class='h-16 p-8 flex justify-center items-center mx-auto max-w-3xl w-full'>
         <p class='text-sm'>© {new Date().getFullYear()} tvk.lol</p>
       </footer>
