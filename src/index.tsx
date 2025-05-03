@@ -5,6 +5,13 @@ import { render } from 'preact'
 import 'uno.css'
 
 const root = document.getElementById('root')
+const overlay = document.getElementById('loading-overlay')
 if (root) {
   render(<App />, root)
+  if (overlay) {
+    setTimeout(() => {
+      overlay.style.opacity = '0'
+    }, 100)
+    setTimeout(() => overlay.remove(), 350)
+  }
 }

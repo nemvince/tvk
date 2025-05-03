@@ -1,7 +1,7 @@
 import type { JSX } from 'preact'
 
 const iconClass =
-  'h-6 w-6 text-purple-800 dark:text-purple-300 md:scale-150 md:hover:text-purple-500 dark:hover:text-purple-400 transition-colors duration-200 ease-in-out peer-hover:text-purple-500 peer-hover:dark:text-purple-400 group-hover/skill:text-purple-500 group-hover/skill:dark:text-purple-400'
+  'h-6 w-6 text-purple-800 dark:text-purple-200 md:scale-150 md:hover:text-purple-500 dark:hover:text-purple-400 transition-colors duration-200 ease-in-out peer-hover:text-purple-500 peer-hover:dark:text-purple-400 group-hover/skill:text-purple-500 group-hover/skill:dark:text-purple-400'
 
 const SkillsDisplay = () => {
   const withIconClass = (icon: JSX.Element) => {
@@ -162,7 +162,7 @@ export const About = () => {
   return (
     <main class='grow container mx-auto mt-24 px-8'>
       <header>
-        <h1 class='scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl'>
+        <h1 class='scroll-m-20 mb-4 text-4xl font-extrabold tracking-tight lg:text-5xl'>
           About me
         </h1>
       </header>
@@ -174,6 +174,14 @@ export const About = () => {
           <br />I have a strong background in anything digital ranging from live
           audio production to web development. I have meticulous standards for
           my work and I am always looking for ways to improve my skills.
+        </p>
+        <hr class='my-4' />
+      </section>
+      <section aria-labelledby='about-site-description'>
+        <p id='about-site-description' class='leading-7 [&:not(:first-child)]:mt-6'>
+          This site is built with Preact and UnoCSS, bundled with Rspack. It showcases my skills and projects as a software engineer.
+          <br />
+          The main goal was to keep the bundle size under 100kb, and I am happy to say that I achieved that goal.
         </p>
         <hr class='my-4' />
       </section>

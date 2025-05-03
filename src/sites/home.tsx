@@ -9,7 +9,7 @@ export const Home = () => {
         duration={100}
         text='The portfolio site of Tamas Vince'
       />
-      <hr class='w-128 my-4' />
+      <hr class='w-1/2 my-4' />
       <p class='text-lg text-center max-w-xl'>
         Built with Preact and UnoCSS, bundled with rspack.
         <br />
