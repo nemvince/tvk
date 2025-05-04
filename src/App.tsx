@@ -1,3 +1,4 @@
+import { Particles } from '@/components/background'
 import { CursorTrail } from '@/components/cursor-trail'
 import { Navbar } from '@/components/navbar'
 
@@ -50,6 +51,7 @@ export const App = () => {
   return (
     <>
       <CursorTrail />
+      <Particles />
       <SiteProvider sites={sites}>
         <>
           <Navbar />
