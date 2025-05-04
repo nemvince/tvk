@@ -20,8 +20,5 @@
     "@unocss/webpack": "^66.1.0",
     "typescript": "^5.8.3"
   },
-  "trustedDependencies": [
-    "@biomejs/biome",
-    "core-js"
-  ]
+  "trustedDependencies": ["@biomejs/biome", "core-js"]
 }

@@ -1,8 +1,10 @@
+import { CursorTrail } from '@/components/cursor-trail'
 import { Navbar } from '@/components/navbar'
+
 import { SiteProvider, useSite } from '@/lib/hooks/site'
 import { About } from '@/sites/about'
-import { Home } from '@/sites/home'
 import { Competitions } from '@/sites/competitions'
+import { Home } from '@/sites/home'
 
 import { useEffect, useState } from 'preact/hooks'
 
@@ -47,6 +49,7 @@ export const App = () => {
 
   return (
     <>
+      <CursorTrail />
       <SiteProvider sites={sites}>
         <>
           <Navbar />
