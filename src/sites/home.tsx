@@ -170,7 +170,7 @@ export const Home = () => {
         <Card as='article'>
           <header>
             <H3 class='mb-0'>React Developer</H3>
-            <P class='text-sm text-gray-500 mt-0 mb-2'>2025–Present</P>
+            <P class='text-sm text-gray-500 mt-0'>2025–Present</P>
           </header>
           <Ul>
             <li>

@@ -2,6 +2,7 @@ import { Navbar } from '@/components/navbar'
 import { SiteProvider, useSite } from '@/lib/hooks/site'
 import { About } from '@/sites/about'
 import { Home } from '@/sites/home'
+import { Competitions } from '@/sites/competitions'
 
 import { useEffect, useState } from 'preact/hooks'
 
@@ -41,6 +42,7 @@ export const App = () => {
   const sites = [
     { name: 'Home', component: Home },
     { name: 'About', component: About },
+    { name: 'Competitions', component: Competitions },
   ]
 
   return (
