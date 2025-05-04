@@ -123,7 +123,7 @@ export const Particles = () => {
   }, [])
 
   return (
-    <div class='absolute inset-0 bg-gradient-to-br from-slate-900 to-blue-950'>
+    <div class='absolute inset-0 -z-9999 bg-gradient-to-br from-slate-900 to-blue-950'>
       <canvas ref={canvasRef} class='absolute inset-0' />
     </div>
   )

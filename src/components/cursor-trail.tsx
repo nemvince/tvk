@@ -142,7 +142,7 @@ export const CursorTrail = (): h.JSX.Element => {
     <>
       <div
         ref={cursorRef}
-        class='fixed top-0 left-0 w-6 h-6 rounded-full border-2 border-neon-pink pointer-events-none z-50 mix-blend-difference'
+        class='fixed top-0 left-0 w-6 h-6 rounded-full border-2 border-purple-700 pointer-events-none z-50 mix-blend-difference'
         style={{
           transform: `translateX(${mousePosition.x - 12}px) translateY(${mousePosition.y - 12}px)`,
           opacity: isVisible ? 1 : 0,
@@ -152,7 +152,7 @@ export const CursorTrail = (): h.JSX.Element => {
 
       <div
         ref={dotRef}
-        class='fixed top-0 left-0 w-2 h-2 rounded-full bg-neon-blue pointer-events-none z-50 mix-blend-difference'
+        class='fixed top-0 left-0 w-2 h-2 rounded-full bg-purple-800 pointer-events-none z-50 mix-blend-difference'
         style={{
           transform: `translateX(${mousePosition.x - 4}px) translateY(${mousePosition.y - 4}px)`,
           opacity: isVisible ? 1 : 0,
@@ -162,7 +162,7 @@ export const CursorTrail = (): h.JSX.Element => {
 
       <div
         ref={trailRef}
-        class='fixed top-0 left-0 w-12 h-12 rounded-full border border-neon-blue/30 pointer-events-none z-50 mix-blend-difference'
+        class='fixed top-0 left-0 w-12 h-12 rounded-full border border-purple-500/30 pointer-events-none z-50 mix-blend-difference'
         style={{
           transform: `translateX(${mousePosition.x - 24}px) translateY(${mousePosition.y - 24}px)`,
           opacity: isVisible ? 0.3 : 0,
