@@ -52,7 +52,7 @@ export const SettingsDialog = ({
           ))}
         </div>
         <div class='flex justify-end gap-4'>
-          <Button type='button' onClick={onClose}>
+          <Button type='button' variant='secondary' onClick={onClose}>
             <svg
               viewBox='0 0 15 15'
               fill='none'
