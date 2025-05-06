@@ -47,7 +47,9 @@ export const SettingsDialog = ({
 
   return (
     <div class={`settings-backdrop ${open && animating ? 'open' : 'closed'}`}>
-      <Card class={`p-6 settings-dialog ${open && animating ? 'open' : 'closed'}`}>
+      <Card
+        class={`p-6 settings-dialog ${open && animating ? 'open' : 'closed'}`}
+      >
         <H3>Settings</H3>
         <H4 id='accent-color-label'>Accent Color</H4>
         <div
@@ -69,6 +71,70 @@ export const SettingsDialog = ({
               onClick={() => setSelected(color)}
             />
           ))}
+        </div>
+        <div class='flex flex-col gap-3 my-4'>
+        <label class='flex items-center gap-2 cursor-pointer select-none text-sm font-medium'>
+      <span class='relative'>
+        <input
+          type='checkbox'
+          checked={settings.theme.cursorTrail}
+          onChange={e => {
+            setSettings({
+              ...settings,
+              theme: { ...settings.theme, cursorTrail: e.currentTarget.checked },
+            })
+          }}
+          class='peer appearance-none w-5 h-5 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-black checked:bg-accent checked:border-accent focus-visible:ring-2 focus-visible:ring-accent transition-colors duration-150 outline-none'
+        />
+        <span class='pointer-events-none absolute left-0 top-0 w-5 h-5 flex items-center justify-center text-black dark:text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-150'>
+          <svg
+            width='16'
+            height='16'
+            viewBox='0 0 16 16'
+            fill='none'
+            stroke='currentColor'
+            strokeWidth='2'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+          >
+            <title>Checked</title>
+            <polyline points='4 8.5 7 11.5 12 5.5' />
+          </svg>
+        </span>
+      </span>
+      <span>Cursor trail</span>
+    </label>
+    <label class='flex items-center gap-2 cursor-pointer select-none text-sm font-medium'>
+      <span class='relative'>
+        <input
+          type='checkbox'
+          checked={settings.theme.siteBackground}
+          onChange={e => {
+            setSettings({
+              ...settings,
+              theme: { ...settings.theme, siteBackground: e.currentTarget.checked },
+            })
+          }}
+          class='peer appearance-none w-5 h-5 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-black checked:bg-accent checked:border-accent focus-visible:ring-2 focus-visible:ring-accent transition-colors duration-150 outline-none'
+        />
+        <span class='pointer-events-none absolute left-0 top-0 w-5 h-5 flex items-center justify-center text-black dark:text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-150'>
+          <svg
+            width='16'
+            height='16'
+            viewBox='0 0 16 16'
+            fill='none'
+            stroke='currentColor'
+            strokeWidth='2'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+          >
+            <title>Checked</title>
+            <polyline points='4 8.5 7 11.5 12 5.5' />
+          </svg>
+        </span>
+      </span>
+      <span>Animated background</span>
+    </label>
         </div>
         <div class='flex justify-end gap-4'>
           <Button type='button' variant='secondary' onClick={handleClose}>
