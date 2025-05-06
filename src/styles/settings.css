@@ -1,0 +1,35 @@
+.settings-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.7);
+  transition: opacity 1s cubic-bezier(.4,2,.6,1);
+  opacity: 0;
+}
+
+.settings-backdrop.open {
+  opacity: 1;
+}
+
+.settings-backdrop.closed {
+  opacity: 0;
+}
+
+.settings-dialog {
+  transition: transform 0.25s cubic-bezier(.4,2,.6,1), opacity 0.25s cubic-bezier(.4,2,.6,1);
+  transform: scale(0.85);
+  opacity: 0;
+}
+
+.settings-dialog.open {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.settings-dialog.closed {
+  transform: scale(0.85);
+  opacity: 0;
+}

@@ -4,6 +4,7 @@ import { H3, H4 } from '@/components/typography'
 import { useSettings } from '@/lib/hooks/settings'
 import { AccentColor } from '@/lib/types'
 import { useState } from 'preact/hooks'
+import '@/styles/settings.css'
 
 export const SettingsDialog = ({
   open,
@@ -13,22 +14,40 @@ export const SettingsDialog = ({
   const [selected, setSelected] = useState<AccentColor>(
     settings.theme.accentColor
   )
+  // Animation state
+  const [visible, setVisible] = useState(open)
+  const [animating, setAnimating] = useState(false)
+
+  // Handle open/close transitions
+  if (open && !visible) {
+    setVisible(true)
+    setAnimating(true)
+  }
+  // When closing, animate out then hide
+  const handleClose = () => {
+    setAnimating(false)
+    setTimeout(() => {
+      setVisible(false)
+      onClose()
+    }, 250) // match CSS duration
+  }
 
   const handleSave = () => {
     setSettings({
       ...settings,
       theme: { ...settings.theme, accentColor: selected },
     })
-    onClose()
+    handleClose()
   }
 
-  if (!open) {
+  // Only render if visible
+  if (!visible) {
     return null
   }
 
   return (
-    <div class='fixed inset-0 z-50 flex items-center justify-center bg-black/70'>
-      <Card class='p-6'>
+    <div class={`settings-backdrop ${open && animating ? 'open' : 'closed'}`}>
+      <Card class={`p-6 settings-dialog ${open && animating ? 'open' : 'closed'}`}>
         <H3>Settings</H3>
         <H4 id='accent-color-label'>Accent Color</H4>
         <div
@@ -52,7 +71,7 @@ export const SettingsDialog = ({
           ))}
         </div>
         <div class='flex justify-end gap-4'>
-          <Button type='button' variant='secondary' onClick={onClose}>
+          <Button type='button' variant='secondary' onClick={handleClose}>
             <svg
               viewBox='0 0 15 15'
               fill='none'
