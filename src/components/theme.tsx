@@ -1,29 +1,7 @@
-import { useEffect, useState } from 'preact/hooks'
+import { useTheme } from '../lib/hooks/theme.js'
 
 export const ThemeToggle = () => {
-  const [theme, setTheme] = useState('light')
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme')
-    if (savedTheme) {
-      setTheme(savedTheme)
-      document.documentElement.classList.toggle('dark', savedTheme === 'dark')
-    } else {
-      const prefersDark = window.matchMedia(
-        '(prefers-color-scheme: dark)'
-      ).matches
-      const defaultTheme = prefersDark ? 'dark' : 'light'
-      setTheme(defaultTheme)
-      document.documentElement.classList.toggle('dark', defaultTheme === 'dark')
-    }
-  }, [])
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light'
-    setTheme(newTheme)
-    localStorage.setItem('theme', newTheme)
-    document.documentElement.classList.toggle('dark', newTheme === 'dark')
-  }
+  const { toggleTheme } = useTheme()
 
   return (
     <button
@@ -32,7 +10,7 @@ export const ThemeToggle = () => {
       onClick={toggleTheme}
       aria-label='Toggle theme'
     >
-      <span class='transition-all scale-125 rotate-180 dark:scale-0 dark:rotate-none'>
+      <span class='transition-all scale-100 rotate-180 dark:scale-0 dark:rotate-none'>
         <svg
           viewBox='0 0 15 15'
           fill='none'
@@ -40,7 +18,7 @@ export const ThemeToggle = () => {
           width='15'
           height='15'
         >
-          <title>Sun</title>
+          <title>Light theme</title>
           <path
             d='M7.5 1.5v-1m0 13.99v-.998m6-5.997h1m-13 0h-1m2-4.996l-1-1m12 0l-1 1m-10 9.993l-1 1m12 0l-1-1m-2-4.997a2.999 2.999 0 01-3 2.998 2.999 2.999 0 113-2.998z'
             stroke='currentColor'
@@ -48,7 +26,7 @@ export const ThemeToggle = () => {
           />
         </svg>
       </span>
-      <span class='absolute transition-all scale-0 dark:scale-125 dark:rotate-90'>
+      <span class='absolute transition-all scale-0 dark:scale-100 dark:rotate-90'>
         <svg
           viewBox='0 0 15 15'
           fill='none'
@@ -56,7 +34,7 @@ export const ThemeToggle = () => {
           width='15'
           height='15'
         >
-          <title>Moon</title>
+          <title>Dark theme</title>
           <path
             d='M1.66 11.362A6.5 6.5 0 007.693.502a7 7 0 11-6.031 10.86z'
             stroke='currentColor'

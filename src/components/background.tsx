@@ -1,3 +1,4 @@
+import { useSettings } from '@/lib/hooks/settings'
 import { useEffect, useRef } from 'preact/hooks'
 
 interface Particle {
@@ -11,6 +12,30 @@ interface Particle {
 }
 
 export const Particles = () => {
+  const { settings } = useSettings()
+  const accent = settings.theme.accentColor
+  // Map accent color to a hue value (UnoCSS/Tailwind color palette approximation)
+  const accentHue: Record<string, number> = {
+    red: 0,
+    orange: 30,
+    amber: 45,
+    yellow: 50,
+    lime: 90,
+    green: 140,
+    emerald: 160,
+    teal: 170,
+    cyan: 190,
+    sky: 200,
+    blue: 220,
+    indigo: 245,
+    violet: 270,
+    purple: 280,
+    fuchsia: 300,
+    pink: 340,
+    rose: 350,
+  }
+  const hue = accentHue[accent] ?? 280
+
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const particlesRef = useRef<Particle[]>([])
   const animationRef = useRef<number>()
@@ -35,7 +60,6 @@ export const Particles = () => {
     const initParticles = () => {
       particlesRef.current = []
       const particleCount = Math.min(Math.floor(window.innerWidth / 10), 150)
-
       for (let i = 0; i < particleCount; i++) {
         particlesRef.current.push({
           x: Math.random() * canvas.width,
@@ -44,7 +68,7 @@ export const Particles = () => {
           speedX: Math.random() * 0.5 - 0.25,
           speedY: Math.random() * 0.5 - 0.25,
           opacity: Math.random() * 0.5 + 0.2,
-          hue: Math.random() * 60 + 200,
+          hue: hue + (Math.random() * 20 - 10), // accent hue with slight variation
         })
       }
     }
@@ -120,10 +144,12 @@ export const Particles = () => {
         cancelAnimationFrame(animationRef.current)
       }
     }
-  }, [])
+  }, [hue])
 
   return (
-    <div class='absolute inset-0 -z-9999 bg-gradient-to-br from-slate-900 to-blue-950'>
+    <div
+      class={`absolute inset-0 -z-9999 bg-gradient-to-br from-${accent}-900 to-${accent}-950`}
+    >
       <canvas ref={canvasRef} class='absolute inset-0' />
     </div>
   )

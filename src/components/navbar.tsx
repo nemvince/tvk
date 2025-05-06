@@ -1,3 +1,4 @@
+import { SettingsButton } from '@/components/settings'
 import { ThemeToggle } from '@/components/theme'
 import { useSite } from '@/lib/hooks/site'
 
@@ -9,13 +10,13 @@ export const Navbar = () => {
       <header class='h-16 p-8 flex justify-between items-center mx-auto max-w-3xl w-full'>
         <button
           type='button'
-          class='text-xl font-bold cursor-pointer transition-all hover:text-purple-500'
+          class='text-xl font-bold cursor-pointer transition-all'
           onKeyPress={() => setActiveSite(sites[0])}
           onClick={() => setActiveSite(sites[0])}
         >
           tvk.lol
         </button>
-        <nav class='flex gap-4'>
+        <nav class='flex items-center gap-4'>
           {sites.map(site => (
             <button
               type='button'
@@ -27,6 +28,7 @@ export const Navbar = () => {
               {site.name}
             </button>
           ))}
+          <SettingsButton />
           <ThemeToggle />
         </nav>
       </header>

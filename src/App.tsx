@@ -3,10 +3,11 @@ import { CursorTrail } from '@/components/cursor-trail'
 import { Navbar } from '@/components/navbar'
 
 import { SiteProvider, useSite } from '@/lib/hooks/site'
-import { About } from '@/sites/about'
-import { Competitions } from '@/sites/competitions'
-import { Home } from '@/sites/home'
 
+import { SettingsProvider, useSettings } from '@/lib/hooks/settings'
+import { ThemeProvider } from '@/lib/hooks/theme'
+import { sites } from '@/sites'
+import type { h } from 'preact'
 import { useEffect, useState } from 'preact/hooks'
 
 const ActiveSiteRenderer = () => {
@@ -41,17 +42,21 @@ const ActiveSiteRenderer = () => {
   )
 }
 
-export const App = () => {
-  const sites = [
-    { name: 'Home', component: Home },
-    { name: 'About', component: About },
-    { name: 'Competitions', component: Competitions },
-  ]
+const WithSettings = ({ children }: { children: h.JSX.Element }) => {
+  return <SettingsProvider>{children}</SettingsProvider>
+}
+
+const Layout = () => {
+  const { settings, isMounted } = useSettings()
+
+  if (!isMounted) {
+    return null
+  }
 
   return (
-    <>
-      <CursorTrail />
-      <Particles />
+    <ThemeProvider>
+      {settings.theme.cursorTrail && <CursorTrail />}
+      {settings.theme.siteBackground && <Particles />}
       <SiteProvider sites={sites}>
         <>
           <Navbar />
@@ -61,6 +66,14 @@ export const App = () => {
       <footer class='h-16 p-8 flex justify-center items-center mx-auto max-w-3xl w-full'>
         <p class='text-sm'>© {new Date().getFullYear()} tvk.lol</p>
       </footer>
-    </>
+    </ThemeProvider>
+  )
+}
+
+export const App = () => {
+  return (
+    <WithSettings>
+      <Layout />
+    </WithSettings>
   )
 }

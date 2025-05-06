@@ -10,7 +10,7 @@ export const Home = () => {
           Hi, I'm Tamas Vince
         </H1>
         <Typewriter
-          class='text-base sm:text-lg text-purple-800 dark:text-purple-200'
+          class='text-base sm:text-lg'
           duration={60}
           text='Software Engineer, Web Enthusiast, Minimalist.'
         />

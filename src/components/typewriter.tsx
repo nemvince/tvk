@@ -22,5 +22,7 @@ export const Typewriter = ({ duration, text, class: cn }: TypewriterProps) => {
   }, [duration, index, text])
 
   // &nbsp; required to not collapse when empty
-  return <span class={cn}>&nbsp;{displayText}</span>
+  return (
+    <span class={`$${cn ? `${cn} ` : ''}text-accent`}>&nbsp;{displayText}</span>
+  )
 }

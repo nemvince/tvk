@@ -1,4 +1,5 @@
 'use client'
+import { useSettings } from '@/lib/hooks/settings'
 import type { h } from 'preact'
 import { useEffect, useRef, useState } from 'preact/hooks'
 
@@ -22,6 +23,7 @@ export const CursorTrail = (): h.JSX.Element => {
     y: 0,
   })
   const [isVisible, setIsVisible] = useState<boolean>(false)
+  const { settings } = useSettings()
 
   const cursorRef = useRef<AnimatedDivElement>(null)
   const dotRef = useRef<AnimatedDivElement>(null)
@@ -142,7 +144,7 @@ export const CursorTrail = (): h.JSX.Element => {
     <>
       <div
         ref={cursorRef}
-        class='fixed top-0 left-0 w-6 h-6 rounded-full border-2 border-purple-700 pointer-events-none z-50 mix-blend-difference'
+        class={`fixed top-0 left-0 w-6 h-6 rounded-full border-2 pointer-events-none z-50 mix-blend-difference border-${settings.theme.accentColor}-700`}
         style={{
           transform: `translateX(${mousePosition.x - 12}px) translateY(${mousePosition.y - 12}px)`,
           opacity: isVisible ? 1 : 0,
@@ -152,7 +154,7 @@ export const CursorTrail = (): h.JSX.Element => {
 
       <div
         ref={dotRef}
-        class='fixed top-0 left-0 w-2 h-2 rounded-full bg-purple-800 pointer-events-none z-50 mix-blend-difference'
+        class={`fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-50 mix-blend-difference bg-${settings.theme.accentColor}-800`}
         style={{
           transform: `translateX(${mousePosition.x - 4}px) translateY(${mousePosition.y - 4}px)`,
           opacity: isVisible ? 1 : 0,
@@ -162,7 +164,7 @@ export const CursorTrail = (): h.JSX.Element => {
 
       <div
         ref={trailRef}
-        class='fixed top-0 left-0 w-12 h-12 rounded-full border border-purple-500/30 pointer-events-none z-50 mix-blend-difference'
+        class={`fixed top-0 left-0 w-12 h-12 rounded-full pointer-events-none z-50 mix-blend-difference border border-${settings.theme.accentColor}-500/30`}
         style={{
           transform: `translateX(${mousePosition.x - 24}px) translateY(${mousePosition.y - 24}px)`,
           opacity: isVisible ? 0.3 : 0,
