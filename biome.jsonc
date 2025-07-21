@@ -2,6 +2,18 @@
   "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
   "extends": ["ultracite"],
   "files": {
-    "includes": ["!**/routeTree.gen.ts", "!apps/backend/drizzle/**"]
+    "includes": [
+      "**/*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}",
+      "!**/routeTree.gen.ts",
+      "!apps/backend/drizzle/**"
+    ]
+  },
+  "linter": {
+    "rules": {
+      "nursery": {
+        // Tailwind CSS rules
+        "noUnknownAtRule": "off"
+      }
+    }
   }
 }
