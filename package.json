@@ -16,7 +16,8 @@
   },
   "scripts": {
     "dev": "turbo run dev",
-    "format": "ultracite format"
+    "format": "ultracite format",
+    "prepare": "husky install"
   },
   "peerDependencies": {
     "typescript": "^5"
