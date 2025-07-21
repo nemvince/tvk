@@ -1,0 +1,29 @@
+{
+  "name": "tvk",
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "packageManager": "bun@1.2.18",
+  "private": true,
+  "devDependencies": {
+    "@biomejs/biome": "2.1.2",
+    "@types/bun": "latest",
+    "lint-staged": "^16.1.2",
+    "turbo": "^2.5.5",
+    "ultracite": "5.0.46"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "format": "ultracite format"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}": [
+      "npx ultracite format"
+    ]
+  }
+}
