@@ -8,6 +8,9 @@ export default defineConfig({
   server: {
     port: 3001,
   },
+  html: {
+    template: './src/index.html',
+  },
   tools: {
     rspack: {
       plugins: [
