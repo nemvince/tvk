@@ -10,5 +10,9 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit",
     "source.organizeImports.biome": "explicit"
-  }
+  },
+  "debug.javascript.defaultRuntimeExecutable": {
+    "pwa-node": "/home/vitamas/.local/share/mise/shims/node"
+  },
+  "python.defaultInterpreterPath": "/home/vitamas/.local/share/mise/installs/python/3.13.5/bin/python"
 }

@@ -1,13 +1,10 @@
 import { SQL } from 'bun';
 import { drizzle } from 'drizzle-orm/bun-sql';
 import { api } from '@/api/contract';
+import env from '@/lib/env';
 
 const databaseClient = new SQL({
-  database: process.env.DB_NAME,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
+  url: env.DATABASE_URL,
 });
 
 export const db = drizzle({ client: databaseClient });

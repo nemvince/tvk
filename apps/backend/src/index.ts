@@ -2,7 +2,7 @@ import { RPCHandler } from '@orpc/server/fetch';
 import { CORSPlugin } from '@orpc/server/plugins';
 import { Hono } from 'hono';
 import { router } from '@/api/router';
-import { auth } from '@/lib/auth';
+import { migrateDb } from './db/migrate';
 
 // make our environment typesafe
 declare module 'bun' {
@@ -36,12 +36,14 @@ app.use('/rpc/*', async (c, next) => {
   await next();
 });
 
-app.on(['POST', 'GET'], '/auth/*', (c) => {
-  return auth.handler(c.req.raw);
-});
+// app.on(['POST', 'GET'], '/auth/*', (c) => {
+//   return auth.handler(c.req.raw);
+// });
 
 app.get('/', (c) => {
   return c.text('Hello Hono!');
 });
+
+migrateDb();
 
 export default app;
