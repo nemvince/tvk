@@ -19,6 +19,7 @@ function Login() {
   const [initialCanvasVisible, setInitialCanvasVisible] = useState(true);
   const [reverseCanvasVisible, setReverseCanvasVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isResendActive, setIsResendActive] = useState(false);
 
   const [email, setEmail] = useState('');
   const [code, setCode] = useState(['', '', '', '', '', '']);
@@ -35,6 +36,7 @@ function Login() {
   const handleEmailSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (email) {
+      // TODO: handle resend logic with timer
       requestOtpMutator.mutate(
         {
           type: 'sign-in',
@@ -127,6 +129,25 @@ function Login() {
     // Reset animations if going back
     setReverseCanvasVisible(false);
     setInitialCanvasVisible(true);
+  };
+
+  const handleResendCode = () => {
+    requestOtpMutator.mutate(
+      {
+        type: 'sign-in',
+        email,
+      },
+      {
+        onSuccess: () => {
+          setCode(['', '', '', '', '', '']);
+          // TODO: Show success message or notification
+        },
+        onError: (_) => {
+          // TODO: Handle error (e.g., show notification)
+        },
+      }
+    );
+    setIsResendActive(false);
   };
 
   return (
@@ -262,14 +283,16 @@ function Login() {
                 </div>
 
                 <div>
-                  <motion.p
+                  <motion.button
                     className="cursor-pointer text-sm text-white/50 transition-colors hover:text-white/70"
+                    disabled={isResendActive}
+                    onClick={handleResendCode}
                     transition={{ duration: 0.2 }}
+                    type="button"
                     whileHover={{ scale: 1.02 }}
-                    // TODO: Implement resend code functionality
                   >
                     Resend code
-                  </motion.p>
+                  </motion.button>
                 </div>
 
                 <motion.button
